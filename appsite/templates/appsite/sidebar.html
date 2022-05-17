@@ -1,0 +1,36 @@
+{% load static %}
+<div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+    <span class="ms-2">Kategori</span>
+</div>
+<div class="">
+    <div class="p-2">
+        {% for kategori in list_kategori %}
+        <a class="btn btn-sm btn-outline-danger" href="{% url 'appsite:kategori' kategori.slug %}">{{kategori}}</a>
+        {% endfor %}
+    </div>
+</div>
+<hr>
+<div class="">
+    <a href="{{iklan.rectangle_link}}" target="_blank" rel="noopener noreferrer">
+        <img class="d-block w-100" src="{{iklan.rectangle.url}}" alt="{{iklan}}" style="width: 100%; height: 100%; object-fit: cover;">
+    </a>
+</div>
+<hr>
+<div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+    <span class="ms-2">Tag</span>
+</div>
+<div class="">
+    <div class="p-2">
+        {% for tag in list_tag %}
+        <a class="btn btn-sm btn-outline-danger" href="{% url 'appsite:tag' tag.slug %}">{{tag}}</a>
+        {% endfor %}
+    </div>
+</div>
+<hr>
+<div class="d-none d-lg-block">
+    <a href="{{iklan.potrait_link}}" target="_blank" rel="noopener noreferrer">
+        <img class="d-block w-100" src="{{iklan.potrait.url}}" alt="{{iklan}}"
+            style="width: 100%; height: 100%; object-fit: cover;">
+    </a>
+</div>
+<hr>

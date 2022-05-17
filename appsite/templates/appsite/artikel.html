@@ -1,0 +1,27 @@
+{% extends 'appsite/index.html' %}{% load static %}
+
+{% block Maincontents %}
+<div class="row">
+    <div class="col-md mb-2">
+        <div class="mb-2">
+            <img class="d-block w-100" src="{{artikel.cover.url}}" alt="{{artikel.slug}}">
+        </div>
+        <div class="row">
+            <div class="h3 text-center">{{artikel.judul}}</div>
+            <div class="small text-center fst-italic">
+                <span>Kategori :</span>
+                <span class="fw-bold">
+                    <a class="text-decoration-none text-danger"
+                        href="{% url 'appsite:kategori' artikel.kategori.slug %}">{{artikel.kategori}}</a>
+                </span>
+            </div>
+            <div class="mt-2">
+                {{artikel.body|safe}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        {% include 'appsite/sidebar.html' %}
+    </div>
+</div>
+{% endblock Maincontents %}

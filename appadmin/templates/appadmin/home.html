@@ -1,0 +1,151 @@
+{% extends 'appadmin/index.html' %}{% load static %}
+
+{% block Maincontents %}
+<div class="row mb-2">
+    <div class="col-md">
+        <div class="row mb-1">
+            <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                <span class="ms-2">Dashboard</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="display-6 text-end">
+                            <span class="align-top">{{list_artikel.count}}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-uppercase">Jumlah Artikel</div>
+                        <div class="small">Jumlah Seluruh Artikel</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="display-6 text-end">
+                            <span class="align-top">{{published.count}}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-uppercase">Published</div>
+                        <div class="small">Artikel yang di Publish</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="display-6 text-end">
+                            <span class="align-top">{{draft.count}}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-uppercase">Draft</div>
+                        <div class="small">Artikel yang di Draft</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                <span class="">Daftar Artikel</span>
+            </div>
+        </div>
+        <div class="row mt-2 mb-2">
+            <div class="col-md">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover small">
+                        <thead>
+                            <tr>
+                                <td>No</td>
+                                <td>Judul</td>
+                                <td>Posted</td>
+                                <td>Edited</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for artikel in page_obj|dictsortreversed:"edited" %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{artikel.judul}}</td>
+                                <td>{{artikel.posted}}</td>
+                                <td>{{artikel.edited}}</td>
+                                <td>
+                                    {% if artikel.status == '1' %}
+                                    <span class="badge bg-success">Published</span>
+                                    {% else %}
+                                    <span class="badge bg-warning">Drafted</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="page-item"><span class="page-link">{{ page_obj.number }}</span></li>
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+            <span class="ms-2">Profil</span>
+        </div>
+        <div class="">
+            <div class="py-2">
+                <div class="table-responsive">
+                    <table class="table table-sm small">
+                        <tr>
+                            <td>Profil</td>
+                            <td>:</td>
+                            <td>
+                                <span>{{akun.nama1}}</span>
+                                <span>{{akun.nama2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nomor HP</td>
+                            <td>:</td>
+                            <td>{{akun.nohp}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{akun.email}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+{% endblock Maincontents %}

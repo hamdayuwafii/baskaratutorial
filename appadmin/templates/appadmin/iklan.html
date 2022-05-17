@@ -1,0 +1,70 @@
+{% extends 'appadmin/index.html' %}{% load static %}
+
+{% block Maincontents %}
+<div class="row mt-3">
+    <div class="col-md shadow">
+        <div class="row mb-2">
+            <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                <span class="">Durasi</span>
+            </div>
+            <div class="col">
+                <div class="lead">{{list_iklan.durasi|date:"d M Y"}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="row mb-4">
+                    <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                        <span class="">Leaderboard</span>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img class="img-fluid" src="{{list_iklan.leaderboard.url}}" alt="list_iklan.leaderboard">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                        <span class="">Rectangle</span>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img class="img-fluid" src="{{list_iklan.rectangle.url}}" alt="list_iklan.rectangle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="h5 text-light text-uppercase bg-danger py-1 m-auto">
+                            <span class="ms-2">Potrait</span>
+                        </div>
+                        <div class="card mb-3">
+                            <img class="img-fluid" src="{{list_iklan.potrait.url}}" alt="list_iklan.potrait">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    <p class="card-title text-uppercase text-center p-0 m-0">Upload Banner</p>
+                </div>
+                <div class="card-body">
+                    {{form}}
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid">
+                        <button class="btn btn-danger" type="submit">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock Maincontents %}

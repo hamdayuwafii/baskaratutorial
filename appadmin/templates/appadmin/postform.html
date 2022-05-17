@@ -1,0 +1,30 @@
+{% extends 'appadmin/index.html' %}{% load static %}
+
+{% block Maincontents %}
+<div class="row mt-4">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group mt-2 mb-2">{{form.status}}</div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-check mt-2 mb-2">Pinned Post<span>{{form.pinned}}</span></div>
+                    </div>
+                </div>
+                <div class="form-group mt-2 mb-2">{{form.kategori}}</div>
+                <div class="form-group mt-2 mb-2">{{form.tag}}</div>
+                <div class="form-group mt-2 mb-2">{{form.cover}}</div>
+                <div class="d-grid mt-2 mb-2 text-end"><button class="btn btn-danger" type="submit">Post</button></div>
+            </div>
+            <div class="col-md">
+                <div class="form-group mt-2 mb-2">{{form.judul}}</div>
+                <div class="form-group mt-2 mb-2">{{form.body}}</div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock Maincontents %}

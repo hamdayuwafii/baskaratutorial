@@ -1,0 +1,14 @@
+{% extends 'appsite/index.html' %}{% load static %}
+
+{% block Maincontents %}
+<div class="row">
+    <div class="col-md">
+        <div class="h4 text-center text-light text-uppercase bg-danger py-1 m-auto">
+            <span class="ms-2">{{about.nama}}</span>
+        </div>
+        <div class="">
+            {{about.body|safe}}
+        </div>
+    </div>
+</div>
+{% endblock Maincontents %}
